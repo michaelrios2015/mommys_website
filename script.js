@@ -108,23 +108,31 @@ var initialMarkers = [
             lat: 108.2772,
             lng: -73.8754
         },
-        title: 'Vietnam'
-    },
+        title: 'Vietnam',
+				year: '2008',
+		season: 'Fall'
+
+		
+		},
 
     {
         position: {
             lat: 19.8563,
             lng: 102.4955
         },
-        title: 'Laos'
-    },
+        title: 'Laos',
+				year: '2008',
+		season: 'Fall'
+		},
 	{
         position: {
             lat: 13.4125,
             lng: 103.8670
         },
-        title: 'Cambodia (Angkor Wat)'
-    },
+        title: 'Cambodia (Angkor Wat)',
+				year: '2008',
+		season: 'Fall'
+		},
 
 ];
 
@@ -140,7 +148,10 @@ var Marker = function(data) {
 
     //I was able to part part of the bounds portion here 
     var myLatLng = new google.maps.LatLng(self.position().lat, self.position().lng);
-    console.log(myLatLng);
+	//String myTitle = self.title;
+    console.log(this.position().lat);
+	console.log(myLatLng);
+	console.log(self.title());
     bounds.extend(myLatLng);
 
     this.marker = new google.maps.Marker({
