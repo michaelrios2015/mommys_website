@@ -137,6 +137,7 @@ var initialMarkers = [
 ];
 
 
+
 //taken from cat function from premium cat clicker I was hoping to simplfy it, but does not 
 //seem like a way to pass data straight into google.maps.Maker functiom
 var Marker = function(data) {
@@ -148,10 +149,7 @@ var Marker = function(data) {
 
     //I was able to part part of the bounds portion here 
     var myLatLng = new google.maps.LatLng(self.position().lat, self.position().lng);
-	//String myTitle = self.title;
-    console.log(this.position().lat);
-	console.log(myLatLng);
-	console.log(self.title());
+    console.log(myLatLng);
     bounds.extend(myLatLng);
 
     this.marker = new google.maps.Marker({
@@ -238,12 +236,12 @@ var ViewModel = function() {
 
         // would prefer to use name and have geoloc get lat and long but not sure how    
         var myLatLng = {
-            lat: 40.7903,
-            lng: -73.9597
+            lat: 0,
+            lng: 0
         };
 
         map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 11,
+                zoom: 0,
                 center: myLatLng
             });
 
@@ -268,3 +266,11 @@ var ViewModelError = {
         ko.applyBindings(ViewModelError, document.getElementById('container2'));
 
     }
+	
+$(document).ready(function() {
+    $(window).resize(function() {
+        google.maps.event.trigger(my-map, 'resize');
+    });
+    google.maps.event.trigger(my-map, 'resize');
+});
+	
