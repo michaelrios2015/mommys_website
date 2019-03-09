@@ -65,6 +65,8 @@ var wikiApi = function(name) {
 // again would prefer to use names and geoloc
 var initialMarkers = [
 
+
+
     {
         position: {
             lat: 50.0755,
@@ -75,9 +77,7 @@ var initialMarkers = [
 		season: 'Spring'
     },
 
-	  
 	
-
     {
         position: {
             lat: 48.6690,
@@ -88,11 +88,6 @@ var initialMarkers = [
 		season: 'Spring'
     },
 
-/*	     "year": "2008",
-,
-            "fall": ["Cambodia (Angkor Wat)"]
-*/	
-	
     {
         position: {
             lat: 47.1625,
@@ -103,10 +98,10 @@ var initialMarkers = [
 		season: 'Spring'
     },
 
-    {
-        position: {
-            lat: 108.2772,
-            lng: -73.8754
+     {
+       position: {
+            lat: 14.0583,
+            lng: 108.2772
         },
         title: 'Vietnam',
 				year: '2008',
@@ -129,11 +124,13 @@ var initialMarkers = [
             lat: 13.4125,
             lng: 103.8670
         },
-        title: 'Cambodia (Angkor Wat)',
+        title: 'Cambodia',
 				year: '2008',
 		season: 'Fall'
 		},
 
+		
+		
 ];
 
 
@@ -267,10 +264,5 @@ var ViewModelError = {
 
     }
 	
-$(document).ready(function() {
-    $(window).resize(function() {
-        google.maps.event.trigger(my-map, 'resize');
-    });
-    google.maps.event.trigger(my-map, 'resize');
-});
+
 	
