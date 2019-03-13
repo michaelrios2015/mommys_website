@@ -139,21 +139,21 @@ var Marker = function (data) {
 	var self = this;
 	this.position = ko.observable(data.position);
 	this.title = ko.observable(data.title);
+	this.info = ko.observable(data.title  + " " + data.year);
 	this.shouldShowMessage = ko.observable(true);
-
+	//console.log(ko.observable(data.title + data.year));
 	//I was able to part part of the bounds portion here 
 	var myLatLng = new google.maps.LatLng(self.position().lat, self.position().lng);
-	console.log(myLatLng);
+	//console.log(myLatLng);
 	bounds.extend(myLatLng);
 
 	this.marker = new google.maps.Marker({
 		position: self.position(),
 		map: map,
-		title: self.title()
-
+		title: self.info()
 	});
 
-	//console.log(this.position().lng);
+	console.log(this.info());
 
 	this.marker.addListener('click', function () {
 
