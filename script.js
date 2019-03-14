@@ -12,7 +12,7 @@ var bounds;
 //var myLatLng;
 
 //gets our articles from wikiepedia
-var wikiApi = function (name) {
+var wikiApi = function (name, year) {
 
 	var wikiUrl = 'https://en.wikipedia.org/w/api.php?action=opensearch&search=' + name +
 		'&format=json&callback=wikiCallback';
@@ -41,7 +41,7 @@ var wikiApi = function (name) {
 			var url = 'http://en.wikipedia.org/wiki/' + articleStr;
 			var urlLink = ('<p> From our friends at Wikipedia ' + '<a href="' + url + '">' + articleStr + '</a></p>');
 
-			var content = '<h3>' + name + '</h3>' + " " + urlLink;
+			var content = '<h3>' + name + " - " + year + '</h3>' + " " + urlLink;
 			infoContent.push(content);
 			infowindow.setContent(infoContent[0]);
 
@@ -139,7 +139,7 @@ var Marker = function (data) {
 	var self = this;
 	this.position = ko.observable(data.position);
 	this.title = ko.observable(data.title);
-	this.info = ko.observable(data.title  + " " + data.year);
+	this.year = ko.observable(data.year);
 	this.shouldShowMessage = ko.observable(true);
 	//console.log(ko.observable(data.title + data.year));
 	//I was able to part part of the bounds portion here 
@@ -150,15 +150,14 @@ var Marker = function (data) {
 	this.marker = new google.maps.Marker({
 		position: self.position(),
 		map: map,
-		title: self.info()
+		title: self.title()
 	});
 
-	console.log(this.info());
 
 	this.marker.addListener('click', function () {
 
 		//get some wikiepdia articles
-		wikiApi(self.title());
+		wikiApi(self.title(), self.year());
 
 		//would prefer if it closed window as well
 		infowindow.open(map, self.marker);
@@ -208,9 +207,11 @@ var ViewModel = function () {
 
 		//check search word against the markers
 		for (var i = 0; i < self.markerList().length; i++) {
-			var check = self.markerList()[i].title().toLowerCase();
+			var checkName = self.markerList()[i].title().toLowerCase();
+			var checkYear = self.markerList()[i].year();
+			console.log(checkYear);
 			//if the search term is found to be part of the string keep item
-			if (check.includes(self.Search())) {
+			if (checkName.includes(self.Search()) || checkYear.includes(self.Search()) ) {
 				self.markerList()[i].shouldShowMessage(true);
 				self.markerList()[i].marker.setVisible(true);
 				//it is part of the search nothing need to be done
