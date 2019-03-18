@@ -1,5 +1,136 @@
+var travels = [	
+		{
+		position: {
+			lat: 50.0755,
+			lng: 14.4378
+		},
+		country: 'Prague',
+		year: '2008',
+		season: 'Spring',
+		continent: 'Europe'
+
+	},
 
 
+	{
+		position: {
+			lat: 48.6690,
+			lng: 19.6990
+		},
+		country: 'Slovakia',
+		year: '2008',
+		season: 'Spring',
+		continent: 'Europe'
+	},
+
+	{
+		position: {
+			lat: 47.1625,
+			lng: 19.5033
+		},
+		country: 'Hungry',
+		year: '2008',
+		season: 'Spring',
+		continent: 'Europe'
+	},
+
+	{
+		position: {
+			lat: 14.0583,
+			lng: 108.2772
+		},
+		country: 'Vietnam',
+		year: '2008',
+		season: 'Fall',
+		continent: 'Asia'
+
+
+	},
+
+	{
+		position: {
+			lat: 19.8563,
+			lng: 102.4955
+		},
+		country: 'Laos',
+		year: '2008',
+		season: 'Fall',
+		continent: 'Asia'
+	},
+	{
+		position: {
+			lat: 13.4125,
+			lng: 103.8670
+		},
+		country: 'Cambodia',
+		year: '2008',
+		season: 'Fall',
+		continent: 'Asia'
+	},
+	{
+		position: {
+			lat: -22.9576,
+			lng: 18.4904
+		},
+		country: 'Namibia',
+		year: '2009',
+		season: 'Fall',
+		continent: 'Africa'
+	},
+	{
+		position: {
+			lat: -22.3285,
+			lng: 24.6849
+		},
+		country: 'Botswana',
+		year: '2009',
+		season: 'Fall',
+		continent: 'Africa'
+	},
+	{
+		position: {
+			lat: -13.1339,
+			lng: 27.8493
+		},
+		country: 'Zambia',
+		year: '2009',
+		season: 'Fall',
+		continent: 'Africa'
+	},
+	{
+		position: {
+			lat: 27.5142,
+			lng: 90.4336
+		},
+		country: 'Buthan',
+		year: '2009',
+		season: 'Winter',
+		continent: 'Asia'
+	},
+	{
+		position: {
+			lat: 20.5937,
+			lng: 78.9629
+		},
+		country: 'India',
+		year: '2009',
+		season: 'Winter',
+		continent: 'Asia'
+	},
+	{
+		position: {
+			lat: 28.3949,
+			lng: 84.1240
+		},
+		country: 'Nepal',
+		year: '2009',
+		season: 'Winter',
+		continent: 'Asia'
+	}
+
+
+];
+/*
 var travels = [{
             "year": "2008",
             "season": "Spring",
@@ -72,7 +203,7 @@ var travels = [{
             "continent": "Africa"
             },
 			
-];
+];*/
             //Can I use this instead of a database??
 			
 
@@ -84,12 +215,14 @@ var travels = [{
 function myFunction(travels) {
 	var input = document.getElementById("myInput").value;
 	var filteredTravels = [];
+	var inputUpperCase = input.toUpperCase();
 
 	for (i= 0;  i < travels.length; i++) {
 		
 	//var place ="string";
 	//year is the same
-	if (input == travels[i].year || input.toUpperCase() == travels[i].continent.toUpperCase()){
+	if (travels[i].year.indexOf(input) > -1 || travels[i].continent.toUpperCase().indexOf(inputUpperCase) > -1 || travels[i].country.toUpperCase().indexOf(inputUpperCase) > -1) {
+//	if (input == travels[i].year || input.toUpperCase() == travels[i].continent.toUpperCase()){
 	filteredTravels.push(travels[i]);}
 	
 		
@@ -143,6 +276,34 @@ for (i= 0;  i < travels.length; i++) {
 }
 
 display(travels);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //should be able to put all travels in json and loop through it :)
  //object with array??
