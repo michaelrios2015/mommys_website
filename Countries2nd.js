@@ -1,7 +1,6 @@
 
 
-var travels = {
-    "travels": [{
+var travels = [{
             "year": "2008",
             "season": "Spring",
             "country": "Prague",
@@ -73,48 +72,77 @@ var travels = {
             "continent": "Africa"
             },
 			
-]}
+];
             //Can I use this instead of a database??
 			
 
 
-	$("#travel").append("<b>" + travels.travels[0].year + "</b> <br>");
-	$("#travel").append(travels.travels[0].season + "<br>");
-	$("#travel").append("<li>" + travels.travels[0].country + "</li>");
+	//$("#travel").append("<b>" + travels.travels[0].year + "</b> <br>");
+	//$("#travel").append(travels.travels[0].season + "<br>");
+	//$("#travel").append("<li>" + travels.travels[0].country + "</li>");
+
+function myFunction(travels) {
+	var input = document.getElementById("myInput").value;
+	var filteredTravels = [];
+
+	for (i= 0;  i < travels.length; i++) {
+		
+	//var place ="string";
+	//year is the same
+	if (input == travels[i].year || input.toUpperCase() == travels[i].continent.toUpperCase()){
+	filteredTravels.push(travels[i]);}
 	
-	var year = travels.travels[0].year;
-	var season = travels.travels[0].season.toUpperCase();;
-	
-	console.log(travels.travels.length);
-	
-for (i= 1;  i < travels.travels.length; i++) {
-	
+		
+}
+	display(filteredTravels);
+
+}
 	
 	
+	var year = 0;
+	var season = "FFF";
+	
+	console.log(travels.length);
+
+function display(travels){	
+$("#travel").empty();
+
+var year = 0;
+	var season = "FFF";
+
+for (i= 0;  i < travels.length; i++) {
+		
+		
+		
 	var place ="string";
 	//year is the same
-	if (year == travels.travels[i].year){
+	if (year == travels[i].year){
 		//season is the same
-		if (season == travels.travels[i].season.toUpperCase()) {
+		if (season == travels[i].season.toUpperCase()) {
 			//post country
-			$("#travel").append("<li>" + travels.travels[i].country + "</li>");
+			$("#travel").append("<li>" + travels[i].country + "</li>");
 		}
 		//changed season
 		else {
-			$("#travel").append(travels.travels[i].season + "<br>");
-			$("#travel").append("<li>" + travels.travels[i].country + "</li>");
-			season = travels.travels[i].season.toUpperCase()
+			$("#travel").append(travels[i].season + "<br>");
+			$("#travel").append("<li>" + travels[i].country + "</li>");
+			season = travels[i].season.toUpperCase()
 		}
 	//changed year	
 	}
 	else {
-	$("#travel").append("<hr>");
-	year = travels.travels[i].year;
-		$("#travel").append("<b>" + travels.travels[i].year + "</b> <br>");
-	//go back one so as not to miss the first trip 	
-	i--;
+	//$("#travel").append("<hr>");
+		year = travels[i].year;
+		season = travels[i].season.toUpperCase();
+		$("#travel").append("<b>" + travels[i].year + "</b> <br>");
+		$("#travel").append(travels[i].season + "<br>");
+		$("#travel").append("<li>" + travels[i].country + "</li>");
+
 	}
 }
+}
+
+display(travels);
 
 //should be able to put all travels in json and loop through it :)
  //object with array??

@@ -127,6 +127,60 @@ var initialMarkers = [
 		year: '2008',
 		season: 'Fall'
 	},
+	{
+		position: {
+			lat: -22.9576,
+			lng: 18.4904
+		},
+		title: 'Namibia',
+		year: '2009',
+		season: 'Fall'
+	},
+	{
+		position: {
+			lat: -22.3285,
+			lng: 24.6849
+		},
+		title: 'Botswana',
+		year: '2009',
+		season: 'Fall'
+	},
+	{
+		position: {
+			lat: -13.1339,
+			lng: 27.8493
+		},
+		title: 'Zambia',
+		year: '2009',
+		season: 'Fall'
+	},
+	{
+		position: {
+			lat: 27.5142,
+			lng: 90.4336
+		},
+		title: 'Buthan',
+		year: '2009',
+		season: 'Winter'
+	},
+	{
+		position: {
+			lat: 20.5937,
+			lng: 78.9629
+		},
+		title: 'India',
+		year: '2009',
+		season: 'Winter'
+	},
+	{
+		position: {
+			lat: 28.3949,
+			lng: 84.1240
+		},
+		title: 'Nepal',
+		year: '2009',
+		season: 'Winter'
+	}
 
 
 ];
@@ -140,6 +194,7 @@ var Marker = function (data) {
 	this.position = ko.observable(data.position);
 	this.title = ko.observable(data.title);
 	this.year = ko.observable(data.year);
+	this.titleYear = ko.observable(data.title + " " + data.year);
 	this.shouldShowMessage = ko.observable(true);
 	//console.log(ko.observable(data.title + data.year));
 	//I was able to part part of the bounds portion here 
