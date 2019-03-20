@@ -238,7 +238,7 @@ function myFunction(travels) {
 	console.log(travels.length);
 
 function display(travels){	
-$("#travel").empty();
+//$("#travel").empty();
 
 var year = 0;
 	var season = "FFF";
