@@ -238,7 +238,7 @@ function myFunction(travels) {
 	console.log(travels.length);
 
 function display(travels){	
-//$("#travel").empty();
+$("#travel").empty();
 
 var year = 0;
 	var season = "FFF";
@@ -277,8 +277,44 @@ for (i= 0;  i < travels.length; i++) {
 
 display(travels);
 
+      var map;
 
 
+
+
+
+	  
+function initMap() {
+  var myLatLng = {lat: 0, lng: 0};
+  
+
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 2,
+    center: myLatLng
+  });
+
+markers(map, travels);
+}
+
+
+
+
+	  function markers (map, travels){
+ var myLatLng;
+	var bounds = new google.maps.LatLngBounds();
+ 
+	for (i= 0;  i < travels.length; i++){
+		console.log("in loop " + travels[i].position.lat);
+  myLatLng = {lat: travels[i].position.lat, lng: travels[i].position.lng};
+  	bounds.extend(myLatLng);
+  console.log(myLatLng);
+  var marker = new google.maps.Marker({
+    position: myLatLng,
+    map: map,
+    title: 'Hello World!'
+  });
+}
+}
 
 
 
