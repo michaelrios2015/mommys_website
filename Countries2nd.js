@@ -227,7 +227,8 @@ function myFunction(travels) {
 	
 		
 }
-	display(filteredTravels);
+    display(filteredTravels);
+    return(filteredTravels);
 
 }
 	
@@ -293,7 +294,10 @@ function initMap() {
     center: myLatLng
   });
 
-markers(map, travels);
+var filteredTravels = myFunction(travels);    
+    
+    
+markers(map, filteredTravels);
 }
 
 
